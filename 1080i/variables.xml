@@ -133,7 +133,8 @@
 		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.PlayCount,0)">T</value>
 	</variable>
 	<variable name="BreadcrumbsInfoVar">
-		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,0,. ]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Artist)">$INFO[ListItem.Artist]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,album) + !String.IsEmpty(ListItem.Album)">$INFO[ListItem.Album]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,song) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]</value>
@@ -178,7 +179,8 @@
 	<!--  List Label Vars -->
 	<variable name="ListMainLabelVar">
 		<value condition="Container.Content(songs)">$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]</value>
-		<value condition="Window.IsActive(videoplaylist) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsActive(videoplaylist) + String.IsEqual(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsActive(videoplaylist) + String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,0,. ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="ListSubLabelVar">
@@ -314,7 +316,8 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(poster)]</value>
 	</variable>
 	<variable name="FloorLabelVar">
-		<value condition="[Container.Content(episodes) | String.IsEqual(ListItem.DBTYPE,episode)] + String.Contains(Container.FolderPath,/recentlyaddedepisodes)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="String.Contains(Container.FolderPath,/recentlyaddedepisodes) + String.IsEqual(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="String.Contains(Container.FolderPath,/recentlyaddedepisodes) + String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,0,. ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="FloorSubLabelVar">
@@ -904,7 +907,8 @@
 		<value condition="Integer.IsEqual(MusicPlayer.UserRating,10)">starrating/10.png</value>
 	</variable>
 	<variable name="WidgetThumbnailLabel">
-		<value condition="String.Contains(Container(9000).ListItem.Property(widgetPath),recentlyaddedepisodes)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.TVShowTitle] - $INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.TVShowTitle] - $INFO[ListItem.Season,,x]$INFO[ListItem.Episode,0,]</value>
 		<value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>

@@ -51,7 +51,7 @@
 			<description>Normal Default Background Image</description>
 			<include>FullscreenDimensions</include>
 			<include>BackgroundFadeAnimation</include>
-			<imagepath fallback="special://skin/backgrounds/default_bg.jpg" background="true">$VAR[GlobalBackgroundVar]</imagepath>
+			<imagepath fallback="special://skin/backgrounds/default_bg.jpg" background="true">$VAR[HomeBackgroundVar]</imagepath>
 		</control>
 	</include>
 	<include name="TVShowNextAiredBackground">

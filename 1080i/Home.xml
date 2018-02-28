@@ -23,7 +23,7 @@
             <include>BackgroundFadeAnimation</include>
             <imagepath background="true">$VAR[HomeBackgroundVar]</imagepath>
         </control>
-        <include>skinshortcuts-template-WidgetFanart</include>
+        <include condition="!Skin.HasSetting(Disable.Fanart)">skinshortcuts-template-WidgetFanart</include>
         <control type="visualisation">
         	<visible>Player.HasAudio + !Skin.HasSetting(Disable.ShowBackgroundVis) + !SlideShow.IsActive</visible>
             <include>FullscreenDimensions</include>
